@@ -1,0 +1,309 @@
+.poptours {
+  background-color: $color-grey-light-2;
+  padding: 24rem 12rem;
+  margin-top: -10rem;
+  text-align: center;
+  &:target .popup {
+    visibility: hidden;
+    opacity: 0;
+  }
+  &__popup {
+    width: 80%;
+    height: 80vh;
+    background-color: $color-white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    border-radius: 0.3rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 2.4rem;
+    &--icon {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.4rem;
+      color: $color-grey-dark;
+    }
+    &--image {
+      width: 44rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    &--right {
+      text-align: left;
+      margin-left: 3.2rem;
+      & h2 {
+        margin-top: 2.4rem;
+      }
+      & h3 {
+        margin-top: 2.4rem;
+      }
+      &--text {
+        column-count: 2;
+        column-gap: 8rem;
+        column-rule: solid $color-grey-dark-2 0.2rem;
+        margin: 2.4rem 0;
+      }
+    }
+  }
+  &__heading-secondry {
+    margin-bottom: 10rem;
+  }
+  &__button {
+    z-index: 2;
+  }
+  &__cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10rem;
+    @include response(tab-land) {
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+  }
+  &__card {
+    position: relative;
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    width: 30%;
+    height: 60rem;
+    @include response(phone) {
+      width: 100%;
+      height: auto;
+    }
+    @include response(tab-land) {
+      width: 70%;
+      height: auto;
+    }
+    &--front {
+      background-color: $color-white;
+      overflow: hidden;
+      box-shadow: 0 1.6rem 2.4rem rgba($color-black, 0.6);
+      border-radius: 0.3rem;
+      transition: all 0.8s;
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $color-white;
+      width: 100%;
+      padding-bottom: 3.2rem;
+
+      @include response(tab-land) {
+        position: relative;
+        backface-visibility: visible;
+        box-shadow: none;
+      }
+      &--img {
+        background-size: cover;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        width: 100%;
+        display: inline-block;
+        height: 20rem;
+        background-blend-mode: screen;
+        &-1 {
+          background-image: linear-gradient(
+              to right bottom,
+              rgba($color-secondry-light, 0.5),
+              rgba($color-secondry-dark, 0.5)
+            ),
+            url("../img/nat-5.jpg");
+        }
+        &-2 {
+          background-image: linear-gradient(
+              to right bottom,
+              rgba($color-primary-light, 0.5),
+              rgba($color-primary-dark, 0.5)
+            ),
+            url("../img/nat-6.jpg");
+        }
+        &-3 {
+          background-image: linear-gradient(
+              to right bottom,
+              rgba($color-tertiary-light, 0.5),
+              rgba($color-tertiary-dark, 0.5)
+            ),
+            url("../img/nat-7.jpg");
+        }
+      }
+      &--title {
+        position: absolute;
+        top: 25%;
+        right: 6%;
+        color: $color-white;
+        text-transform: uppercase;
+        width: 75%;
+        text-align: right;
+        font-size: 2.8rem;
+        font-weight: 300;
+        @include response(phone) {
+          width: 60%;
+        }
+        @include response(tab-land) {
+          width: 40%;
+        }
+        &_span {
+          padding: 1rem 1.5rem;
+
+          -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+          &-1 {
+            background-image: linear-gradient(
+              to right bottom,
+              rgba($color-secondry-light, 0.85),
+              rgba($color-secondry-dark, 0.85)
+            );
+          }
+          &-2 {
+            background-image: linear-gradient(
+              to right bottom,
+              rgba($color-primary-light, 0.85),
+              rgba($color-primary-dark, 0.85)
+            );
+          }
+          &-3 {
+            background-image: linear-gradient(
+              to right bottom,
+              rgba($color-tertiary-light, 0.85),
+              rgba($color-tertiary-dark, 0.85)
+            );
+          }
+        }
+      }
+      &--lists {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        margin-top: 4rem;
+      }
+      &--list {
+        display: inline-block;
+        padding-bottom: 0.8rem;
+        border-bottom: solid $color-grey-light-2 0.1rem;
+        width: 61%;
+        text-align: center;
+      }
+      &--list:last-child {
+        border: none;
+      }
+    }
+
+    &--back {
+      transition: all 0.8s;
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding-bottom: 3.2rem;
+      transform: rotateY(180deg);
+      background-color: $color-white;
+      overflow: hidden;
+      box-shadow: 0 1.6rem 2.4rem rgba($color-black, 0.6);
+      border-radius: 0.3rem;
+      @include response(tab-land) {
+        position: relative;
+        backface-visibility: visible;
+        transform: rotate(0);
+        overflow: visible;
+        min-height: 30rem;
+        padding: 3.2rem;
+        clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+        margin-top: -1rem;
+        z-index: -1;
+        box-shadow: none;
+      }
+      &-1 {
+        background-image: linear-gradient(
+          to bottom right,
+          $color-secondry-light,
+          $color-secondry-dark
+        );
+      }
+      &-2 {
+        background-image: linear-gradient(
+          to bottom right,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+      &-3 {
+        background-image: linear-gradient(
+          to bottom right,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
+      &--button {
+        position: absolute;
+        top: 70%;
+        @include response(tab-land) {
+          position: relative;
+        }
+      }
+      &--information {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: $color-white;
+        text-transform: uppercase;
+        text-align: center;
+        @include response(tab-land) {
+          position: relative;
+        }
+        &--price {
+          font-size: 5.6rem;
+          font-weight: 100;
+          margin-top: -1rem;
+        }
+      }
+    }
+
+    &:hover &--front {
+      transform: rotateY(-180deg);
+      @include response(tab-land) {
+        transform: rotateY(0);
+      }
+    }
+    &:hover &--back {
+      transform: rotateY(0);
+      @include response(tab-land) {
+        transform: rotateY(0);
+      }
+    }
+  }
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color-black;
+  opacity: 0.8;
+  z-index: 1000;
+}
+.popup {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+}

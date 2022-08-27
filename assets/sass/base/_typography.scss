@@ -1,0 +1,35 @@
+body {
+  font-family: "Lato";
+}
+.heading-primary {
+  font-size: 3.2rem;
+}
+.heading-secondry {
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  // letter-spacing: 0.3rem;
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all 0.2s;
+  letter-spacing: 0.6rem;
+  @include response(phone) {
+    font-size: 2rem;
+    letter-spacing: 0;
+  }
+  @include response(tab-land) {
+    font-size: 2.4rem;
+    letter-spacing: 0.3rem;
+  }
+  &:hover {
+    transform: skewY(2deg) skewX(4deg);
+    text-shadow: 2rem 2rem 2rem rgba($color-black, 0.3);
+  }
+}
+.heading-tertioary {
+  text-transform: uppercase;
+}
